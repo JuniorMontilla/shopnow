@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo - Producto{% endblock %}
+
+{% block header %}
+{% if user.is_authenticated%}
+<ul class="nav pull-right">
+    <li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.username}} <b class="caret"></b></a>
+	<ul class="dropdown-menu">
+	    <li><a href='{% url "index_view"%}'><i class="icon-shopping-cart"></i>Productos</a></li>
+	    <li><a href='{% url "profile_view"%}'><i class="icon-user"></i>Perfil</a></li>
+	    <li><a href='{% url "logout_view"%}'><i class="icon-off"></i>Cerrar sesion</a></li>
+	</ul>
+    </li>
+</ul>
+{% else %}
+<ul class= "nav pull-right">
+    <li><a href='{% url "login_view"%}'>Inicia sesión </a></li>
+    <li><a href='{% url "register_view"%}'>Registrate</a></li>
+</ul>		
+{% endif %}
+{% endblock %}
+
+ {% block content %}
+ <form  action="." method="POST" enctype="multipart/form-data">
+ <h2>{{ message }}</h2>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary" value="Enviar">Publicar</button>
+{% endblock %}

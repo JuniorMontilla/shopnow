@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+
+{% block title %}Perfil{% endblock %}
+ 
+{% block header %}
+{% if user.is_authenticated%}
+    <ul class="nav pull-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.username}} <b class="caret"></b></a>
+             <ul class="dropdown-menu">
+                <li><a href='{% url "index_view"%}'><i class="icon-shopping-cart"></i>Productos</a></li>
+                <li><a href='{% url "product_view"%}'><i class="icon-bullhorn"></i>Publicar</a></li>
+                <li><a href='{% url "logout_view"%}'><i class="icon-off"></i>Cerrar sesion</a></li>
+            </ul>
+        </li>
+    </ul>
+{% else %}
+    <ul class= "nav pull-right">
+        <li><a href='{% url "login_view"%}'>Acceder</a></li>
+        <li><a href='{% url "register_view"%}'>Registrate</a></li>
+    </ul>       
+{% endif %}
+{% endblock %}
+{% block content %}
+
+
+<form action="." method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" id="id_avatar" name="avatar" accept="image/jpg, image/png"/>
+    {{ form.avatar.errors }}
+    <input type="text" id="id_phone" name="phone" placeholder="Telefono" />
+    {{ form.phone.errors }}
+    <input type="text" id="id_cellphone"  name="cellphone" placeholder="Celular" />
+    {{ form.cellphone.errors }}
+    <input type="text"  id="id_address" name="address" placeholder="Direccion"/>
+    {{ form.address.errors }}
+    <input type="radio" id="id_sex" name="sex" value="mujer" />Mujer
+    <input type="radio" id="id_sex" name="sex" value="hombre" />Hombre
+    {{ form.sex.errors }}
+    <input type="text" id="id_dateofbirth" name="dateofbirth" placeholder="Fecha de nacimiento"/>
+    {{ form.dateofbirth.errors }}
+    <input type="text" id="id_occupation" name="occupation" placeholder="Ocupacion. ej: programador" />
+    {{ form.occupation.errors }}
+    <input type="text" id="id_country" name="country" placeholder="Pais">
+    {{ form.country.errors }}
+    <input type="text" id="id_city" name="city" placeholder="Ciudad"/>
+    {{ form.city.errors }}
+    <input type="text" id="id_province" name="province" placeholder="Provincia"/>
+    {{form.province.errors }}
+    <input type="text" id="id_municipality" name="municipality" placeholder="Municipio "/>
+    {{form.municipality.errors }}
+    <button type="submit" class="btn btn-primary" value="submit">Registrar perfil</button><br/> 
+    <ul  class="errorlist"><li>{{ message }}</li></ul>
+</form>
+{% endblock %}

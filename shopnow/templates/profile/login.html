@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block header %}
+{% endblock %}
+{% block content %}
+<h2>Inicia sesión</h2>
+<form action="." method="POST" >
+    {% csrf_token %}
+    <input type="text" id="id_username" name="username" placeholder="Usuario"/>
+    {{ form.username.errors }}
+    <input type="password" id="id_password"  name="password" placeholder="Clave"/>
+    {{ form.password.errors }}
+    <button type="submit" class="btn btn-primary" value="Acceder">Iniciar sesión</button><br />
+    <ul class="errorlist"> {{ message }}</ul>
+</form>
+<strong>Registrate</strong><a href='{% url "register_view" %}'> aquí</a> 
+{% endblock %}

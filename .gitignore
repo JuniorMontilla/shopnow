@@ -1,0 +1,11 @@
+env/
+.idea/
+*.db
+*.pyc
+
+*.png
+*.gif
+*.jpg
+*.jpeg
+*.svg
+
