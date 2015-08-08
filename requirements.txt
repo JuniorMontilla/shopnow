@@ -1,4 +1,4 @@
 Django==1.5
-PIL==1.1.7
+http://effbot.org/media/downloads/Imaging-1.1.5.tar.gz
 django-grappelli==2.4.10
 wsgiref==0.1.2
