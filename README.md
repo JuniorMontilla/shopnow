@@ -1,2 +1,4 @@
-shopnow
+sopnow
 =======
+
+a marketplace.
